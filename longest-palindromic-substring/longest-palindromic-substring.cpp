@@ -8,19 +8,22 @@ public:
         
         int n = s.size();
         
-        // int table[n][n];
+        // int dp[n][n];
         
-        // memset(table,-1,sizeof(table)); //Initializing table with -1
+        //Initializing table with 0
+        // memset(dp, 0, sizeof(dp)); 
         
         vector<vector<int>> dp(n, vector<int>(n, 0));
         
+        //Filling up the table
         for (int i = 0; i < n; i++) 
-            dp[i][i] = 1;  //Filling up the table
+            dp[i][i] = 1;  
         
         int maxLen = 1;
         int start = 0; 
         
-        for (int i = 0; i < n - 1; i++) { //checking for substring of length 2.
+        //checking for substring of length 2.
+        for (int i = 0; i < n - 1; i++) { 
             if (s[i] == s[i + 1]) { 
                 dp[i][i + 1] = 1; 
                 start = i;  //Updating the start
@@ -29,7 +32,7 @@ public:
         }
         
         //Checking for length greater than 2 and k is length of substring 
-        for(int k=3;k<=n;k++){ 
+        for(int k = 3; k <= n; k++){ 
             for(int i = 0; i < n - k + 1; i++){
                 
                 int j = i + k - 1; //Initializing the end Index i.e j = i + k - 1
